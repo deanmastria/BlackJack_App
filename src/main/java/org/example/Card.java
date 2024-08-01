@@ -23,7 +23,7 @@ public class Card {
     // Overriding the toString method to provide a string representation of the card
     @Override
     public String toString() {
-        return cardRank + "of" + cardSuit;
+        return cardRank + " of " + cardSuit;
     }
 
 
