@@ -20,15 +20,25 @@ public class GameRunner {
             deck.shuffle();
 
             System.out.println("Balance: " + p1.getBalance());
-            System.out.printf("Place Bet: ");
-            int bet = sc.nextInt();
-            sc.nextLine(); // Consume the newline
 
-            if (!p1.placeBet(bet)) {
-                System.out.printf("P1 has left the table.");
-                break;
+            int bet = 0;
+            while (true) {
+                System.out.printf("Place Bet: ");
+                bet = sc.nextInt();
+                sc.nextLine(); // Consume the newline
+
+                if (!p1.placeBet(bet)) {
+                    System.out.printf("Not enough $ in wallet, try again or enter 0 to leave the table");
+                } else {
+                    break;
+                }
+
+                if (bet == 0) {
+                    System.out.println("p1 has left the table, remaining funds: " + p1.getBalance());
+                    System.out.printf("See you next time!");
+                    return;
+                }
             }
-
             // Deal a hand of 2 cards to the player
             p1.receiveCard(deck.dealCard()); // Deal the first card to the player
             p1.receiveCard(deck.dealCard()); // Deal the second card to the player
