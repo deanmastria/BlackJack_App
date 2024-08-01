@@ -82,13 +82,9 @@ public class GameRunner {
                 if (dealer.isBust()) {
                     System.out.println("Dealer busts! " + player.getName() + " wins.");
                     player.updateBalance(bet * 2); // Player wins, double the bet
-                    break;
+                    promptToPlayAgain(sc, player);
+                    continue; // Move to the next round
                 }
-            }
-
-            if (dealer.isBust()) {
-                promptToPlayAgain(sc, player);
-                continue; // Dealer busts, move to the next round
             }
 
             // Determine the winner for first hand
@@ -150,6 +146,7 @@ public class GameRunner {
         }
     }
 }
+
 
 
 
